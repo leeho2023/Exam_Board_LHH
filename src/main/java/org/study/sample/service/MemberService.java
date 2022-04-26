@@ -13,5 +13,9 @@ public interface MemberService {
 	void memberDelete(String m_no);
 
 	MemberDTO memberRead(String m_no);
+
+	void memberUpdate(MemberDTO dto);
+	
+	String login(MemberDTO dto);
 	
 }

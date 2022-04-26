@@ -3,6 +3,7 @@ package org.study.sample.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.study.sample.mapper.MemberMapper;
 import org.study.sample.model.MemberDTO;
@@ -13,8 +14,13 @@ public class MemberServiceImpl implements MemberService{
 	@Autowired
 	private MemberMapper mapper;
 	
+	@Autowired
+	private BCryptPasswordEncoder pwEncoder;
+	
 	@Override
 	public void memberInsert(MemberDTO dto) {
+		
+		dto.setM_pw(pwEncoder.encode(dto.getM_pw()));
 		
 		mapper.memberInsert(dto);
 		
@@ -34,6 +40,29 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public MemberDTO memberRead(String m_no) {
 		return mapper.memberRead(m_no);
+	}
+
+	@Override
+	public void memberUpdate(MemberDTO dto) {
+		mapper.memberUpdate(dto);
+	}
+
+	@Override
+	public String login(MemberDTO dto) {
+		
+		String resultPW = mapper.getRealPassword(dto.getM_id());
+		System.out.println("resultPW의 값 : " + resultPW);
+		
+		boolean loginFilter = pwEncoder.matches(dto.getM_pw(), resultPW);
+		
+		System.out.println(loginFilter);
+		
+		if(loginFilter) {
+			return "Success";
+		}else {
+			return "Fail";
+		}
+		
 	}
 
 }

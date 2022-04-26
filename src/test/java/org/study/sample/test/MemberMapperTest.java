@@ -66,10 +66,22 @@ public class MemberMapperTest {
 		mapper.memberDelete("2");
 	}
 	
-	@Test
+	//@Test
 	public void memberReadTest() {
 		MemberDTO dto = mapper.memberRead("5");
 		log.info(dto.toString());
+	}
+	
+	@Test
+	public void memberUpdateTest() {
+		MemberDTO dto = new MemberDTO();
+		
+		dto.setM_no(10);
+		dto.setM_address("testAddress10");
+		
+		mapper.memberUpdate(dto);
+		MemberDTO dto1 = mapper.memberRead("10");
+		log.info(dto1.toString());
 	}
 	
 	
