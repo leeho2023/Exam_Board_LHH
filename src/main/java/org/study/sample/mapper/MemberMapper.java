@@ -10,8 +10,8 @@ public interface MemberMapper {
 
 	public void memberInsert(MemberDTO dto);
 	public List<MemberDTO> memberList();
-	public void memberDelete(String m_no);
-	public MemberDTO memberRead(String m_no);
+	public void memberDelete(int m_no);
+	public MemberDTO memberRead(int m_no);
 	public void memberUpdate(MemberDTO dto);
 	public String getRealPassword(String m_id);
 	

@@ -21,7 +21,7 @@
 	</select>
 	
 	<update id="memberUpdate">
-		UPDATE memberTBL SET m_address = #{m_address} WHERE m_no = #{m_no}
+		UPDATE memberTBL SET m_id = #{m_id}, m_address = #{m_address} WHERE m_no = #{m_no}
 	</update>
 	
 	<select id="getRealPassword" resultType="String">

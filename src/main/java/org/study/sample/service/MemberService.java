@@ -10,9 +10,9 @@ public interface MemberService {
 
 	List<MemberDTO> memberList();
 	
-	void memberDelete(String m_no);
+	void memberDelete(int m_no);
 
-	MemberDTO memberRead(String m_no);
+	MemberDTO memberRead(int m_no);
 
 	void memberUpdate(MemberDTO dto);
 	

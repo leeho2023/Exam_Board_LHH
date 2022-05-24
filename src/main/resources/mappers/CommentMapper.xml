@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+                  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+                  
+<mapper namespace="org.study.sample.mapper.CommentMapper">
+
+	<insert id="commentInsert">
+		INSERT INTO commentTBL (b_no, c_writer, c_content) VALUES(#{b_no}, #{c_writer}, #{c_content})
+	</insert>
+	
+	<select id="commentList" resultType="org.study.sample.model.CommentDTO">
+		SELECT * FROM commentTBL WHERE b_no = #{b_no} ORDER BY c_no DESC
+	</select>
+	
+	<delete id="commentDelete">
+		DELETE FROM commentTBL WHERE c_no = #{c_no}
+	</delete>
+
+</mapper>

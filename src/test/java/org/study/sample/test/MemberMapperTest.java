@@ -5,6 +5,7 @@ import java.util.List;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.event.TransactionalEventListener;
@@ -21,15 +22,18 @@ public class MemberMapperTest {
 	@Autowired
 	private MemberMapper mapper;
 	
+	@Autowired
+	private BCryptPasswordEncoder pwEncoder;
 	
-	//@Test
+	
+	@Test
 	public void memberInsertTest() {
 		log.info("memberInsertTest() 시작");
 		MemberDTO dto = new MemberDTO();
 		
-		dto.setM_id("testID2");
-		dto.setM_pw("testPW2");
-		dto.setM_address("testAddress2");
+		dto.setM_id("testID1");
+		dto.setM_pw(pwEncoder.encode("testPW1"));
+		dto.setM_address("testAddress1");
 		log.info("dto 값 확인 : " + dto);
 		
 		mapper.memberInsert(dto);
@@ -63,16 +67,16 @@ public class MemberMapperTest {
 	
 	//@Test
 	public void memberDeleteTest() {
-		mapper.memberDelete("2");
+		mapper.memberDelete(2);
 	}
 	
 	//@Test
 	public void memberReadTest() {
-		MemberDTO dto = mapper.memberRead("5");
+		MemberDTO dto = mapper.memberRead(5);
 		log.info(dto.toString());
 	}
 	
-	@Test
+	//@Test
 	public void memberUpdateTest() {
 		MemberDTO dto = new MemberDTO();
 		
@@ -80,7 +84,7 @@ public class MemberMapperTest {
 		dto.setM_address("testAddress10");
 		
 		mapper.memberUpdate(dto);
-		MemberDTO dto1 = mapper.memberRead("10");
+		MemberDTO dto1 = mapper.memberRead(10);
 		log.info(dto1.toString());
 	}
 	

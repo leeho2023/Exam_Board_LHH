@@ -33,12 +33,12 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
-	public void memberDelete(String m_no) {
+	public void memberDelete(int m_no) {
 		mapper.memberDelete(m_no);
 	}
 
 	@Override
-	public MemberDTO memberRead(String m_no) {
+	public MemberDTO memberRead(int m_no) {
 		return mapper.memberRead(m_no);
 	}
 

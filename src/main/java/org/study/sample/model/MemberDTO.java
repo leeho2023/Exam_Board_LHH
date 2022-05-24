@@ -16,6 +16,12 @@ public class MemberDTO {
 	private String m_pw;
 	private String m_address;
 	private Timestamp m_regDate;
+	
+	@Override
+	public String toString() {
+		return "MemberDTO [m_no=" + m_no + ", m_id=" + m_id + ", m_address=" + m_address + ", m_regDate=" + m_regDate
+				+ "]";
+	}
 
 	
 }

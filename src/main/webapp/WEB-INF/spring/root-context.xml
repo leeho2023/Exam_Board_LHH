@@ -14,7 +14,7 @@
 	<!-- Root Context: defines shared resources visible to all other web components -->
 
 	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
-		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver"></property>
 		<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/sampleProjectDB?useSSL=false"></property>
 		<property name="username" value="root"></property>
 		<property name="password" value="rootroot"></property>
@@ -36,6 +36,7 @@
 	<!-- 비밀번호 암호화를 위한 bean -->
 	<bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
    </bean>
-	
+   
+	<security:http pattern="/favicon.ico" security="none" />
 		
 </beans>

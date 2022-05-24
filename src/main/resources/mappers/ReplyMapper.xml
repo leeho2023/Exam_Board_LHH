@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+                  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.study.sample.mapper.ReplyMapper">
+
+	<insert id="replyInsert">
+		INSERT INTO replyTBL (r_boardNum, r_writer, r_content) VALUES(#{r_boardNum}, #{r_writer}, #{r_content})
+	</insert>
+	
+	<select id="replyShow" resultType="org.study.sample.model.ReplyDTO">
+		SELECT * FROM replyTBL WhERE r_boardNum = #{r_boardNum} ORDER BY r_no DESC
+	</select>
+	
+	<delete id="replyDelete">
+		DELETE FROM replyTBL WHERE r_no = #{r_no}
+	</delete>
+
+</mapper>

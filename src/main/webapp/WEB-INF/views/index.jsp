@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Sample Project 대문</title>
+<link rel="stylesheet" href="${path}/resources/css/mine.css">
 </head>
 <body>
 	
@@ -13,10 +14,15 @@
 	
 	<a href="/memberList">회원보러가기</a><br><br>
 	
+	
+	
 	<c:if test="${not empty sessionScope.m_id}">
 		<a href="/logout">로그아웃</a><br>
 		${sessionScope.m_id}님 환영합니다.
+				
 	</c:if>
+	
+	<a href="/boardList">게시판</a>
 	
 	<c:if test="${empty sessionScope.m_id}">
 		<h2>로그인</h2>
@@ -26,7 +32,6 @@
 			<input type="submit" value="로그인">
 		</form>
 	</c:if>
-	
 	
 	<script type="text/javascript">
 		<c:if test="${msg eq false}">

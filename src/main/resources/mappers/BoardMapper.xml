@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+                  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.study.sample.mapper.BoardMapper">
+	
+	<delete id="boardDelete">
+		DELETE FROM boardTBL WHERE b_no = #{b_no}
+	</delete>
+
+	<insert id="boardInsert">
+		INSERT INTO boardTBL(b_title, b_content, b_writer)
+		VALUES(#{b_title}, #{b_content}, #{b_writer})
+	</insert>
+	
+	<select id="boardList" resultType="org.study.sample.model.BoardDTO">
+		SELECT * FROM boardTBL
+	</select>
+	
+	<select id="boardRead" resultType="org.study.sample.model.BoardDTO">
+		SELECT * FROM boardTBL WHERE b_no = #{b_no}
+	</select>
+	
+	<update id="boardUpdate">
+		UPDATE boardTBL 
+		SET b_title = #{b_title}, b_content = #{b_content}, b_modifyRegDate = curtime() 
+		WHERE b_no = #{b_no}
+	</update>
+
+</mapper>

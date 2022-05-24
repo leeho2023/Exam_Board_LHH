@@ -19,7 +19,6 @@
 		<tr>
 			<td>회원번호</td>
 			<td>아이디</td>
-			<td>비밀번호</td>
 			<td>주소</td>
 			<td>가입일</td>
 			<td>삭제하기</td>
@@ -28,7 +27,6 @@
 			<tr>
 				<td>${list.m_no}</td>
 				<td><a href="/memberRead?m_no=${list.m_no}">${list.m_id}</a></td>
-				<td>${list.m_pw}</td>
 				<td>${list.m_address}</td>
 				<td><fmt:formatDate value="${list.m_regDate}" pattern="yy년 MM월 dd일  aHH:ss"/></td>
 				<td><a href="/memberDelete?m_no=${list.m_no}">삭제</a></td>
